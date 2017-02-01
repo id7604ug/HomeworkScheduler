@@ -28,10 +28,12 @@ def view_all_assignments():
     # print(assignment_list)
     return render_template('view_all_assignments.html', assignment_list=assignment_list)
 
+# Route for viewing delete item page
 @app.route('/delete_assignment')
 def delete_assignment_page():
     return render_template('delete_assignment.html')
 
+# Route for deleting item
 @app.route('/delete_item', methods=['POST'])
 def delete_item():
     item_id = request.form['id_to_delete']
@@ -48,6 +50,7 @@ def delete_item():
         print("Error deleting schedule item")
         return render_template('error')
 
+# Route for checking due assignments
 @app.route('/check_due_assignments')
 def check_due_assignments():
     return render_template('check_due_assignments.html')
@@ -59,6 +62,7 @@ def add_schedule_route():
     if verify_schedule_data(schedule_item):
         print("valid data")
         print(request.form)
+        # Should convert date to UTC
         item = ScheduleItem(schedule_item[0], schedule_item[1], schedule_item[2] == "True", schedule_item[3], schedule_item[4])
         db.session.add(item)
         db.session.commit()
@@ -66,6 +70,7 @@ def add_schedule_route():
         print("invalid data")
     return render_template('new_assignment.html')
 
+# Route for updating an item
 @app.route('/update_item', methods=['POST'])
 def update_schedule_item():
     request_id = request.form.get('item_id')
@@ -91,7 +96,7 @@ def update_schedule_item():
 # @app.teardown_request
 # def shutdown_session(exception=None):
 #     db.remove()
-
+# Method to varify schedule date NOT USED
 def verify_schedule_data(schedule_item):
     try:
         str(schedule_item[0])

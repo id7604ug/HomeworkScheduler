@@ -1,9 +1,11 @@
 from scheduler_flask import db
+# Class to create schedule objects
 class ScheduleItem(db.Model):
 
 	# Table name
 	__tablename__ = 'scheduleitems'
 
+	# Variables/columns
 	id = db.Column(db.Integer, primary_key=True)
 	class_name = db.Column(db.String)
 	name = db.Column(db.String)
@@ -23,37 +25,7 @@ class ScheduleItem(db.Model):
 			date_due = datetime.date.today() + datetime.timedelta(days=7)
 		self.date_due = date_due
 
-
-	# def set_item_name(self, name, description, date_due):
-	# 	self.name = name
-	# 	self.description = description
-	# 	if date_due != None: # Check if user entered a due date
-	# 		self.date_due = date_due
-	#
-	# # Return text name
-	# def get_name(self):
-	# 	return self.name
-
-	# Return boolean complete
-	def get_complete(self):
-		return self.complete
-
-	# Returns text description
-	def get_description(self):
-		return self.description
-
-	# Returns datetime due date
-	def get_due_date(self):
-		return self.date_due
-
-	# Checks if the due date is past due
-	def is_past_due(self):
-		if self.date_due < datetime.date.today():
-			return "This is past due!"
-		else:
-			days_left = self.date_due - datetime.date.today()
-			return "You have " + str(days_left) + " days left"
-
+	# Method to set db item properties NOT USED
 	def read_db_item(self, id, name, complete, description, date_due):
 		self.id = id
 		self.name = name
