@@ -1,0 +1,10 @@
+  {% extends "base.html" %}
+
+  {% block content %}
+
+          <form action='/delete_item' method="post">
+            Schedule Item to Delete (id): <input type="text" name="id_to_delete" value="">
+            <input type="submit" value="Delete">
+          </form>
+
+  {% endblock %}

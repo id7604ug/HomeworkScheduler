@@ -1,0 +1,20 @@
+  {% extends "base.html" %}
+
+  {% block content %}
+
+          {% for item in assignment_list %}
+
+            <form action="/update_item" method="post">
+              ID: {{ item.id }}
+              <input type='hidden' name='item_id' value={{ item.id }}>
+              Class Name: <input type="text" name="class_name" value="{{ item.class_name }}">
+              Name: <input type="text" name="name" value="{{ item.name }}">
+              Complete (True/False): <input type="text" name="complete" value="{{ item.complete }}">
+              Description: <input type="text" name="description" value="{{ item.description }}">
+              Date Due: <input type="date" name="due_date" value="{{ item.date_due }}">
+              <input type="submit" name="button" value="Update">
+            </form>
+
+          {% endfor %}
+
+  {% endblock %}

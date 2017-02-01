@@ -1,0 +1,14 @@
+  {% extends "base.html" %}
+
+  {% block content %}
+
+          <form action='/submit_item' method="post">
+            Class: <input type="text" name="class" value=""></br>
+            Name of Assignment: <input type="text" name="name" value=""><br>
+            Is Assignment Complete: True<input type="radio" name="is_complete" value="True">False<input type="radio" name="is_complete" value="False"><br>
+            Description: <input type="text" name="description" value=""><br>
+            Due Date: <input type="date" name="due_date"><br>
+            <input type="submit" value="Submit">
+          </form>
+          
+  {% endblock %}

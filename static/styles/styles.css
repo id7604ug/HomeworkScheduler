@@ -1,0 +1,19 @@
+body {
+	font-size: 12px;
+	margin: 37px 0px 0px 0px;
+}
+h1 {
+	padding: 0px;
+	margin: 0px
+}
+
+.banner {
+	background-color: #ff0000
+	width: 1000;
+	height: 150;
+	float: left;
+}
+
+.topmenu {
+	width: 1000;
+}

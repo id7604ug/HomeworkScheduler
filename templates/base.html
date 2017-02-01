@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homework Scheduler</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="page>">
+        <div class="header">
+          <!-- Top Banner with text -->
+          <div class="banner">
+            <h1>Class Homework Scheduler</h1>
+          </div>
+          <!-- Top menu bar -->
+          <div class="topmenu">
+            <!-- List of top menu list items -->
+            <ul>
+              <li><a href="/">Main Menu</a></li> <!-- Main menu -->
+              <li><a href="/add_assignment">Add Assignment</a></li> <!-- Add assignment -->
+              <li><a href="/view_all_assignments">View all Assignments</a></li> <!--List all Assignments -->
+              <li><a href="/delete_assignment">Delete Assignment</a></li> <!-- Delete assignment -->
+              <li><a href="/check_due_assignments">Check for due Assignments</a></li> <!-- Check for assignments due -->
+            </ul>
+          </div>
+        </div>
+        <!-- Main ontent div -->
+        <div class="content">
+
+          {% block content %}   <!-- A block that the child template will fill in -->
+
+          {% endblock %}
+
+        </div>
+        <!-- Footer div -->
+        <div class="footer">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
