@@ -24,9 +24,9 @@ def add_assignment():
 # Set URL for viewing all assignments
 @app.route('/view_all_assignments')
 def view_all_assignments():
-    assignment_list = ScheduleItem.query.all()
+    assignment_list = ScheduleItem.query.all() # Gets all items in the db
     # print(assignment_list)
-    return render_template('view_all_assignments.html', assignment_list=assignment_list)
+    return render_template('view_all_assignments.html', assignment_list=assignment_list) # Sends the assignment list to the html page
 
 # Route for viewing delete item page
 @app.route('/delete_assignment')
@@ -36,17 +36,17 @@ def delete_assignment_page():
 # Route for deleting item
 @app.route('/delete_item', methods=['POST'])
 def delete_item():
-    item_id = request.form['id_to_delete']
+    item_id = request.form['id_to_delete'] # Pulls the item_id from the hidden form input
     if item_id == None:
         print("Not deleting anything")
         return render_template('delete_assignment.html')
-    schedule_item = ScheduleItem.query.get(item_id)
-    if schedule_item:
-        db.session.delete(schedule_item)
-        db.session.commit()
+    schedule_item = ScheduleItem.query.get(item_id) # Get item with the id gotten from the used form
+    if schedule_item: # Checks if schedule_item exists
+        db.session.delete(schedule_item) # Deletes item from session
+        db.session.commit() # Commits session changes to db
         print("Item with id: " + item_id + " has beed deleted.")
         return render_template('delete_assignment.html')
-    else:
+    else: # If error has occurred getting the schedule item
         print("Error deleting schedule item")
         return render_template('error')
 
@@ -58,6 +58,7 @@ def check_due_assignments():
 # Handle adding a schedule item
 @app.route('/submit_item', methods=['POST'])
 def add_schedule_route():
+    # 
     schedule_item = [request.form['class'], request.form['name'], request.form['is_complete'], request.form['description'], request.form['due_date']]
     if verify_schedule_data(schedule_item):
         print("valid data")
